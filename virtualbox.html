@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+	<head>
+		<title>Tutorial Virtualización</title>
+		<link rel="icon" type="image/png" href="images/logo.png" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="The web is the main gateway for hackers. In this article, we will discover the main web vulnerabilities, how to detect and exploit them." />
+		<meta name="keywords" content="web, vulnerabilities, XSS, injection, Cybersecurity" />
+		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=lL1kzevbO11da3e3Kg4a6wSoMgV6PIq-SBHvt-Ez0yy9hkc3p7V46wGtgZoyHJ0QGS3vfVp3q3gLRUA4qk2yrQ" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9zZWN1cml0eWd1aWxsLmNvbS93ZWJ2dWxuLmh0bWw"/><script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/jquery.scrollgress.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/jquery.slidertron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+	</head>
+	<body>
+
+			<header id="header" class="skel-layers-fixed">
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Inicio</a></li>
+						<li>
+							<a href="" class="icon fa-angle-down">Temarios</a>
+							<ul>
+								<li><a href="virtualbox.html">Tutorial virtualbox </a>
+								</li>
+								
+					
+
+							</ul>
+						</li>
+
+					</ul>
+				</nav>
+			</header>
+
+			<section id="main" class="wrapper style1">
+				<header class="major">
+					<h1>Tutorial de Virtualización</h1>
+					<br>
+					<p>A continuación veremos una explicación breve sobre la virtualización y veremos todo lo que necesitamos para empezar.</p>
+
+				</header>
+				<div class="container">
+						
+						<section id="content">
+							<h3>¿Qué es una máquina virtual?</h3>
+							<p>Una máquina virtual (VM) es un entorno que funciona como un sistema informático virtual con su propia CPU, memoria, interfaz de red y almacenamiento,
+                                pero el cual se crea en un sistema de hardware físico, ya sea on-premise (que se instala en local) o no.
+                                El sistema de software se llama hipervisor, y se encarga de separar los recursos de la máquina del sistema de hardware e implementarlos adecuadamente para que la VM pueda utilizarlos.</p>
+							<h3>Indice</h3>
+								<ul>
+									<li><a href="#hipervisor">¿Qué son los hipervisores?</a></li>
+									<li><a href="#empezando">Empezando</a></li>
+									<li><a href="#creandomv">Creando la maquina virtual</a></li>
+									<li><a href="#configurandomv">Configurando la maquina virtual</a></li>
+								</ul>
+
+
+
+							<div id="hipervisor"><h3>¿Qué son los hipervisores?</h3>
+								
+								Los hipervisores son una pieza crucial de software que hace posible la virtualización. Extrae las máquinas invitadas y el sistema operativo en el que se ejecutan desde el hardware real.<br>
+
+      En esencia, los hipervisores crean una capa de virtualización que separa la CPU/procesadores, la RAM y otros recursos físicos de las máquinas virtuales que creas.
+
+      La máquina en la que instalamos un hipervisor se denomina máquina host, a diferencia de las máquinas virtuales invitadas que se ejecutan sobre ellas.
+                                <br>
+      Los hipervisores emulan los recursos disponibles para que las máquinas invitadas puedan usarlos. Independientemente del sistema operativo que inicie con una máquina virtual, pensará que el hardware físico real está a su disposición.
+<br>
+      Desde el punto de vista de una máquina virtual, no hay diferencia entre el entorno físico y el virtualizado. Las máquinas invitadas no saben que el hipervisor las creó en un entorno virtual y que comparten la potencia de cómputo disponible. Dado que las máquinas virtuales se ejecutan simultáneamente con el hardware que las alimenta, dependen completamente de su funcionamiento estable.</p>
+									
+
+								<h4>Hipervisor tipo 1</h4>
+								<p>
+                                    El hipervisor Tipo 1 se conoce como el hipervisor «bare-metal.  Esto significa que se ejecuta directamente en el hardware físico de la máquina host; no tiene que cargar un sistema operativo subyacente antes de eso. Debido al hecho de que los hipervisores tipo 1 tienen acceso directo al hardware subyacente (y no a otros sistemas operativos y controladores de dispositivos con los que contentar), este tipo de hipervisor se considera el mejor rendimiento y el más eficiente para la informática empresarial. 
+    <br>
+    <br>
+    <strong>Ejemplos:</strong><br>
+    Algunos ejemplos de hipervisores tipo 1 son Citrix / Xen Server, VMware ESXi y Microsoft Hyper-V.
+								</p>
+								
+								<h4>Hipervisor tipo 2</h4>
+								<p>
+                                    La principal diferencia entre los hipervisores tipo 1 y tipo 2 es que los hipervisores tipo 2 generalmente se instalan en un sistema operativo existente. Esto lo convierte en un hipervisor alojado, ya que depende del sistema operativo de la máquina host para llevar a cabo ciertas operaciones, como administrar llamadas a la CPU, administrar recursos de red, administrar memoria y almacenamiento. Esto permite que los hipervisores tipo 2 admitan una amplia gama de hardware.
+    <br>
+    <br>
+    <strong>Ejemplos:</strong><br>
+    Los ejemplos de hipervisores tipo 2 incluyen Microsoft Virtual PC, Oracle Virtual Box, VMware Workstation, Oracle Solaris Zones, VMware Fusion, Oracle VM Server para x86 y más.
+								</p>
+							
+                                
+							<div id="empezando"><h3>Primeros pasos</h3>
+								<p>
+                                    Para empezar necesitaremos tener instalado en nuestro sitema una software de virtualización, hay varios de estos como pueden ser: <strong>VMWARE</strong> o <strong>VIRTUALBOX</strong>.
+  antes deberiamos ver si nuestro pc tiene activado la virtualización. En este tutorial usaremos<a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> ya que este es de uso gratuito y uno de los más utilizados.
+  También necesitaremos la imagen ISO del sistema operativo a instalar.
+
+								<center><img class="image fit" style="max-width:70%" src="images/nuevo.png" alt="admintareas" /></a></center>
+								
+								<br>
+								
+								
+								A la derecha debajo de CPU se puede observar información que nos ofrece el administrador de tareas, una de ellas es la de virtualización, en mi caso pone que esta habilitado, si no es vuestro caso, deberéis de activarla en la BIOS.
+    <br>
+    Una vez asegurados que tenemos la virtualización activa y instalado el programa de virtualización pasaremos a instalar una máquina.
+
+								</p>	
+							</div>		
+
+<br>
+<br>
+
+
+
+
+							<div id="creandomv"><h3>Creando la máquina virtual</h3>
+								<p>
+                                    Abrimos VirtualBox y le damos a nueva. Le damos el nombre que queramos a la máquina, seleccionamos que sistema operativo vamos a instalar(WINDOWS,LINUX,MAC...)Seleccionamos la version del sistema operativo a isntalar.
+								</p>
+
+								<left><img class="image fit" style="max-width:70%" src="images/CapturaVBOX.jpg" alt="encoding" /></a></left>
+                                <right><img class="image fit" style="max-width:70%" src="images/Capturaneva.jpg" alt="encoding" /></a></right>
+								<br>
+								Con esto tendremos el nombre de la máquina y sistema operativo y version. Lo sigueinte sera asignarle la cantidad de memoria RAM que queramos que tenga la máquina virtual.
+								<br>
+                                <center><img class="image fit" style="max-width:70%" src="images/tamañomemoria.jpg" alt="encoding" /></a></center>
+								<br>
+								Ahora le daremos a la opción de crear un disco duro virtual ahora.
+								<br>
+                                <br>
+                                <center><img class="image fit" style="max-width:70%" src="images/crear.jpg" alt="encoding" /></a></center>
+								<br>
+                                A continuación selecionamos el tipo de archivo que queremos usar para el disco virtual. Escogeremos la opcion Virtual Disk Image.
+								<br>
+                                <br>
+                                <center><img class="image fit" style="max-width:70%" src="images/archivo.jpg" alt="encoding" /></a></center>
+                                <br>
+                                Aqui se nos presentan 2 opciones;
+    Reservado dinamicamente: Con esta opcion el tamaño que tenga la máquina virtual estara capada a la de la máquina física.
+    Tamaño fijo: Con esta opción nosotros le asignaremos el tamaño máximo de la que dispondrá nuetra máquina virtual.
+    Aqui selecionaréis la opcion que queráis, yo le voy a poner tamaño fijo para que la máquina virtual sea más rapida.
+                                <br>
+                                <br>
+                                <center><img class="image fit" style="max-width:70%" src="images/tamaño.jpg" alt="encoding" /></a></center>
+                                <br>
+                                En este recuadro nos da la opción de modificar la ruta de los archivos a instalar, podemos dejarlo por defecto o seleccionar otra unidad de disco duro donde quisieramos instalarlo.
+    También selecionaremos el tamaño que queramos que tenga nuestra máquina virtual, si en el recuadro anterior habéis selecionado reservado dinamicamente no os preocupéis mucho por cuanto tamaño pnerle.
+    Si de contrario habeis elejido tamaño fijo tendréis que ponerle suficiente tamaño para que esta funcione, dependiendo del sistema operativo que tengáis puesto necesitará un minimo, normalmente minimo 15GB.
+    Al tener todo bien configurado le daremos a Crear.
+                                <br>
+                                <br>
+                                <center><img class="image fit" style="max-width:70%" src="images/ubicacionymemoria.jpg" alt="encoding" /></a></center>
+                                <br>
+                                Despues de haberle dado a crear veremos que ya tenemos hecha la máquina virtual, en mi caso es un windows7 con el nombre: ddd.
+      A continuacián haremos click a nuestra máquina y le daremos a iniciar.
+                                <br>
+                                <br>
+                                <center><img class="image fit" style="max-width:70%" src="images/mimaquina.jpg" alt="encoding" /></a></center>
+                                <br>
+                                Se os abrirá un recuadro que pone: Seleccionar disco de inicio, abajo de este os aparecerá seguramente en blanco un recuadro rellenable y a la derecha de este un icono con una carpeta.
+      Hacemos click en la carpeta.
+                                <br>
+                                <br>
+                                <center><img class="image fit" style="max-width:70%" src="images/seleccionar.jpg" alt="encoding" /></a></center>
+                                <br>
+                                Se os abrirá un recuadro como el siguiente que se muestra en la imagen, en vustro caso si es la primera máquina virtual que montais este estará en blanco.
+      Le daremos click en añadir, y buscamos el directorio y/o carpeta donde tengamos guardada la imagen ISO.
+                                <br>
+                                <br>
+                                <center><img class="image fit" style="max-width:70%" src="images/añadir.jpg" alt="encoding" /></a></center>
+                                <br>
+                                Y listo. Ya tendrías una máquina virtual funcionando, pero quedaría configurarla, que sera lo siguiente que haremos.
+                                <br>
+                                
+								</p>
+
+							</div>			
+
+                            <br>
+                            <br>
+
+
+
+							<div id="configurandomv"><h3>Configurando la máquina virtual</h3>
+								<p>Ahora vamos a empezar con la configuración de la máquina virtual. No vamos a entrar en detalle con todas las opciones , solo la que más nos interesan.</p>
+
+								<br>
+								<p>
+                                    Algunas de las configuraciones solo se pueden cambiar cuando la máquina este encendida, pero para las que vamos a cambiar no hace falta que este encendida.
+                                    Lo primero tenemos las configuraciones del sistema, en esta se nos muestra la información del sistema, como el SO y su versión.
+								<br>
+								<br>
+								<center><img class="image fit" style="max-width:70%" src="images/Captura4.jpg" alt="encoding" /></a></center>
+								</p>
+                                <br>
+								<p>
+                                    En la misma configuración del sistema vamos a irnos al apartado avanzado, aqui vamos a poner en bidireccional: Compartir portapapeles y Arrasyrar y soltar.
+                                    Con esto podremos copiar textos etc desde la máquina física a la máquina virtual.
+                                    <br>
+                                    <br>
+                                    <center><img class="image fit" style="max-width:70%" src="images/Captura5.jpg" alt="encoding" /></a></center>
+								</p>
+                                <br>
+								
+								<p>
+                                    Por ultimo vamos a configurar la Red, para esta hay muchas opcines de configuración pero solo vamos a tocar el adaptador de Red.
+    En el adaptador 1 se nos desglosaran varias opciones: NAT, ADPTADOR PUENTE, RED INTERNA, RED NAT, entre otras.
+    Nosotros le pondremos el adaptador puente para que nuestra MV(maquina virtual) se conecte a la misma red que el anfitrión.
+                                    <br>
+                                    <br>
+                                    <center><img class="image fit" style="max-width:70%" src="images/Captura6.jpg" alt="encoding" /></a></center>
+                                    <br>
+                                    <br>
+                                    Con todo esto hecho ya tendremos nuestra máquina virtual en pleno funcionamiento y con configuraciones mínimas pero funcionales.
+    Por ultimo dentro de la máquina virtual, en la parte superior a la derecha entre ENTRADA Y AYUDA hay otro recuadro que pone DISPOSITIVOS,harenos click en el.
+    Una vez dentro le daremos a <strong>INSERTAR IMAGEN DE CD DE LAS "GUEST ADITTIONS"</strong>
+                                    <br>
+                                    <br>
+                                    <center><img class="image fit" style="max-width:70%" src="images/Captura7.jpg" alt="encoding" /></a></center>
+                                    <br>
+                                    Y listo ya tienes todo lo necesario para trabajar con tu máquina virtual.
+								</p>
+
+							</div>			
+
+
+
+
+
+							
+						</section>
+								
+				</div>
+			</section>
+	</body>
+</html>
